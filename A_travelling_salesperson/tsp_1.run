@@ -1,0 +1,6 @@
+reset;
+model tsp.mod;
+data tsp_1.dat;
+option solver gurobi;
+solve;
+display Tour_Length;

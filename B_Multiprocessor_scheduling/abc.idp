@@ -1,0 +1,25 @@
+vocabulary V {
+    t: ℤ → 𝔹
+    t1: ℤ → 𝔹
+    n : ℤ → 𝔹
+    d1 : ℤ → 𝔹
+    task : (t ⨯ t1) → 𝔹
+    start : (t ⨯ n ⨯ d1 ⨯ t1) → 𝔹
+    m : () → ℤ
+    d : () → ℤ    
+}
+
+theory T : V {
+    {
+        ∀x ∈ t, m2 ∈ n, d2 ∈ d1, y ∈ t1 : start(x, m2, d2,  y) ← task(x, y) ∧ d2 ≥ 0 ∧ d2 < (d()-y).
+    }
+    ∀x ∈ t : ∃P ∈ n, S1, S2 ∈ d1, L1 ∈ t1 : start(x, P, S1, L1) ∧ start(x, P, S2, L1) ∧ S1 = S2.
+    ∀K ∈ ℤ : #{x, P, S1, S2, L1 : start(x, P, S1, L1) ∧ start(x, P, S2, L1) ∧ S1 ≠ S2 = K} = 0.
+    ∀x ∈ t : ∃P1, P2 ∈ n, S1, S2 ∈ d1, L1 ∈ t1 : start(x, P1, S1, L1) ∧ start(x, P2, S2, L1) ∧ P1 = P2.
+    ∀K ∈ ℤ : #{x, y, P, S1, L1, S2, L2 : start(x, P, S1, L1) ∧ start(y, P, S2, L2) ∧ S1 > S2 ∧ S1 < (S2 + L2) = K} = 0.
+    ∀x ∈ t : ∃y ∈ t, P ∈ n, S1, S2 ∈ d1, L1, L2 ∈ t1 : start(x, P, S1, L1) ∧ start(y, P, S2, L2) ∧ S1 > S2 ∧ S1 ≥ (S2 + L2).
+
+}
+procedure main() {
+    pretty_print(model_expand(T, S, max=3))
+}

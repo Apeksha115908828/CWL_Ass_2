@@ -1,0 +1,15 @@
+data;
+
+param roll_width := 10 ;
+
+param: WIDTHS: orders :=
+
+		 2 	 3
+
+		 1 	 4
+
+		 4 	 5
+
+		 3 	 4
+
+		 

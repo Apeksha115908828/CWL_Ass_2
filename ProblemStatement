@@ -1,0 +1,91 @@
+Assignment 2: Modeling and solving with rules and constraints
+
+Modeling and solving combinatorial problems are essential for automating solutions to complex application problems.  Advanced languages and tools supporting rules and constraints are exactly to take on the challenges.
+
+You can find provided files at https://drive.google.com/drive/folders/1t87g5bjfVU_9W7JOtiBz2ZSGnNAYB809
+
+
+Your task is to implement the three problems below, each by using (1) ASP system clingo and (2) another system of your choice, and checking the correctness and efficiency of your implementations.
+
+For (2), you may use any tool that you think can write clear---simple and easy to understand---rules and constraints, and have acceptable performance.  You may use different systems for different problems if you prefer.
+
+Possible systems for (2) includes
+
+  - IDP-Z3 (https://www.idp-z3.be),
+  - another ASP system DLV (https://www.dlvsystem.it/dlvsite),
+  - a Prolog system with CLP,
+  - Minizinc (https://www.minizinc.org) or another CP system,
+  - AMPL with Gurobi or another MP system,
+  - Wolfram Mathematica (https://www.wolfram.com/language),
+  - SymPy (https://www.sympy.org) or SageMath (https://www.sagemath.org),
+  - RAI (https://docs.relational.ai), and
+  - Google OR-Tools (https://developers.google.com/optimization).
+
+
+As for A1, for correctness and performance checking, you need to run on some specific test cases for correctness, and run on a number of randomly generated input of different sizes for performance (report what kinds of inputs you generated, include size and number, and how you did timing, include what interval you are timing, e.g., from before loading in input to after writing output), plot the results, and conclude what kind of curves you are getting.
+
+In addition, for correctness, you need to check and compare the output from the 2 systems: compare the yes/no and minimal measures returned from the 2 systems, and check that the output model satisfies all other constraints.  Note that solving the problems may take exponential time, but checking a solution takes only polynomial time.
+
+
+A. Traveling salesperson.
+
+GIVEN: Set of cities 1,...,n, integer distances d(i,j) from city i to city j, and a start city.
+
+QUESTION: What is the shortest possible route that visits each city exactly once and returns to the start city?
+
+
+B. Multiprocessor scheduling [Garey-Johnson A5.2, Problem SS8].
+
+GIVEN: Set T of tasks, number m in Z+, length l(t) in Z+ for each t in T, and a deadline D in Z+.  (Z+ is the set of positive integers.)
+
+QUESTION: Is there an m-processor schedule for T that meets the overall deadline D, i.e., a function s: T -> Z0+ such that, for all u >= 0, the number of tasks t in T for which s(t) <= u < s(t)+l(t) is not more than m and such that, for all t in T, s(t)+l(t) <= D?  (Z0+ is Z+ plus element 0.)
+
+
+C. Roll cutting [https://www.youtube.com/watch?v=CAmd6cdEfLk 16:05-17:55]
+
+GIVEN: Set W of ordered widths; number n of patterns considered; occurrences a(i,j) of width i in pattern j, for each i in W and j = 1,...,n; and orders b(i) for width i, for each i in W.
+
+QUESTION: What is X(j), the number of rolls to cut using pattern j, for each pattern j = 1,...,n; to minimize sum of X(j) over j=1,...,n, the total number of rolls cut; satisfying sum of a(ij)*X(j) >= b(i) over j=1,...,n, for all i in W, the number of rolls of width i cut being at least the number ordered>?
+
+
+D. Writing and running your program
+
+You may start with the provided file tsp.lp for part A.  It contains the traveling salesperson program from the online environment for clingo.
+
+As for A1, for correctness and efficiency analysis, you may code in any way/language that's easiest for you.  You may use functionalities built-in the system you use, or use a language like Python to run the command line with files for input/output.  Most systems also have interfaces with Python.
+
+Reminder: Your README file must say what you used, as part of how to run and test your code. In general, check the syllabus for requirements for the README file.
+
+
+E. Things to think about, as for A1
+
+1. Can I make my program clearer?
+
+2. What are the pros and cons of different languages for implementing the same problem?
+
+3. Which language allows me to write which programs in the clearest and easiest way?
+
+4. Which language and/or way of writing the programs gives the best performance?
+
+5. Why in the world there are so many languages/systems for rules and constraints?  How about creating a single language to allow all problems to be expressed in the clearest and easiest way and run most efficiently?
+
+
+F. Submission
+
+1. Prepare your submission by adding all your files (including your README.txt) to a zip file.
+
+2. Name your file exactly as "First_Last_ID_Ax.zip", where First is your first name, Last is your last name, ID is your Stony Brook student ID, and x is the homework number.
+
+3. Submit the single zip file in Google classroom, and add no other files or comments.
+
+
+------------
+Extra credit (15% each, up to 90%)
+
+Use any other rule/constraint system to solve any of the 3 problems, and check its correctness and performance as described.  Clarity of your program is the most important.
+
+
+------------
+Bug bounty
+
+If you find this assignment description to be buggy or ambiguous, please post about it.  Students finding errors or ambiguity will be rewarded with extra credit.

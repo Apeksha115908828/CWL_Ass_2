@@ -1,0 +1,8 @@
+data;
+
+param: NODES: hpos vpos :=
+1 1 4
+
+2 2 3
+
+3 5 6
